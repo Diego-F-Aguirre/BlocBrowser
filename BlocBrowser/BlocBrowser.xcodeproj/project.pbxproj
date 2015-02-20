@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		BC09CAE01A96224C00BEF3B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC09CADF1A96224C00BEF3B9 /* main.m */; };
 		BC09CAE31A96224C00BEF3B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC09CAE21A96224C00BEF3B9 /* AppDelegate.m */; };
-		BC09CAE61A96224C00BEF3B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC09CAE51A96224C00BEF3B9 /* ViewController.m */; };
 		BC09CAEB1A96224C00BEF3B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC09CAEA1A96224C00BEF3B9 /* Images.xcassets */; };
 		BC09CAFA1A96224C00BEF3B9 /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC09CAF91A96224C00BEF3B9 /* BlocBrowserTests.m */; };
-		BC09CB041A96231100BEF3B9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC09CB031A96231100BEF3B9 /* Default-568h@2x.png */; };
+		BC09CB071A96241900BEF3B9 /* WebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC09CB061A96241900BEF3B9 /* WebBrowserViewController.m */; };
+		BC09CB0B1A96D1C600BEF3B9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC09CB0A1A96D1C600BEF3B9 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +31,13 @@
 		BC09CADF1A96224C00BEF3B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC09CAE11A96224C00BEF3B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC09CAE21A96224C00BEF3B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BC09CAE41A96224C00BEF3B9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BC09CAE51A96224C00BEF3B9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BC09CAEA1A96224C00BEF3B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BC09CAF31A96224C00BEF3B9 /* BlocBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC09CAF81A96224C00BEF3B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC09CAF91A96224C00BEF3B9 /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
-		BC09CB031A96231100BEF3B9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BC09CB051A96241900BEF3B9 /* WebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBrowserViewController.h; path = BlocBrowser/WebBrowserViewController.h; sourceTree = "<group>"; };
+		BC09CB061A96241900BEF3B9 /* WebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebBrowserViewController.m; path = BlocBrowser/WebBrowserViewController.m; sourceTree = "<group>"; };
+		BC09CB0A1A96D1C600BEF3B9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,9 @@
 		BC09CAD11A96224B00BEF3B9 = {
 			isa = PBXGroup;
 			children = (
-				BC09CB031A96231100BEF3B9 /* Default-568h@2x.png */,
+				BC09CB0A1A96D1C600BEF3B9 /* Default-568h@2x.png */,
+				BC09CB051A96241900BEF3B9 /* WebBrowserViewController.h */,
+				BC09CB061A96241900BEF3B9 /* WebBrowserViewController.m */,
 				BC09CADC1A96224B00BEF3B9 /* BlocBrowser */,
 				BC09CAF61A96224C00BEF3B9 /* BlocBrowserTests */,
 				BC09CADB1A96224B00BEF3B9 /* Products */,
@@ -82,8 +84,6 @@
 			children = (
 				BC09CAE11A96224C00BEF3B9 /* AppDelegate.h */,
 				BC09CAE21A96224C00BEF3B9 /* AppDelegate.m */,
-				BC09CAE41A96224C00BEF3B9 /* ViewController.h */,
-				BC09CAE51A96224C00BEF3B9 /* ViewController.m */,
 				BC09CAEA1A96224C00BEF3B9 /* Images.xcassets */,
 				BC09CADD1A96224B00BEF3B9 /* Supporting Files */,
 			);
@@ -197,7 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC09CAEB1A96224C00BEF3B9 /* Images.xcassets in Resources */,
-				BC09CB041A96231100BEF3B9 /* Default-568h@2x.png in Resources */,
+				BC09CB0B1A96D1C600BEF3B9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,8 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC09CAE61A96224C00BEF3B9 /* ViewController.m in Sources */,
 				BC09CAE31A96224C00BEF3B9 /* AppDelegate.m in Sources */,
+				BC09CB071A96241900BEF3B9 /* WebBrowserViewController.m in Sources */,
 				BC09CAE01A96224C00BEF3B9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
