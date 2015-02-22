@@ -53,21 +53,27 @@
     [self.reloadButton setEnabled:NO];
     
     [self.backButton setTitle:NSLocalizedString(@"Back", @"Back command") forState:UIControlStateNormal];
-    [self.backButton addTarget:self.webView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    
     
     [self.forwardButton setTitle:NSLocalizedString(@"Forward", @"Forward command") forState:UIControlStateNormal];
-    [self.forwardButton addTarget:self.webView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
+    
     
     [self.stopButton setTitle:NSLocalizedString(@"Stop", @"Stop command") forState:UIControlStateNormal];
-    [self.stopButton addTarget:self.webView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
+    
     
     [self.reloadButton setTitle:NSLocalizedString(@"Reload", @"Reload command") forState:UIControlStateNormal];
-    [self.reloadButton addTarget:self.webView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
-    
+   
+    [self addButtonTargets];
     
     
     for (UIView *viewToAdd in @[self.webView, self.textField, self.backButton, self.forwardButton, self.stopButton, self.reloadButton]){
         [maineView addSubview:viewToAdd];
+        
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Welcome!", @"Welcome title") message:NSLocalizedString(@"Get excited to use the best browser ever!", @"Welcome comment") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK, I'm excited!", @"Welcome button title") otherButtonTitles:nil];
+        
+        [alert show];
+        
     }
     
     self.view = maineView;
@@ -113,6 +119,21 @@
     NSURL *URL = [NSURL URLWithString:URLString];
     
     if (!URL.scheme) {
+        
+        
+//        NSRange urlSpace = [URLString rangeOfString:@" "];
+//
+//        NSString *urlNoSpace = [URLString stringByReplacingCharactersInRange:urlSpace withString:@"+"];
+//
+//        
+//        if (URL != NSNotFound) {
+//            URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.google.com/search?q=%@", urlNoSpace]];
+//
+//        } else {
+//        URL= [NSURL URLWithString:[NSString stringWithFormat:@"http://%@",URLString]];
+//            
+//        }
+        
         URL= [NSURL URLWithString:[NSString stringWithFormat:@"http://%@",URLString]];
     }
     
@@ -167,7 +188,34 @@
     self.backButton.enabled = [self.webView canGoBack];
     self.forwardButton.enabled = [self.webView canGoForward];
     self.stopButton.enabled = self.frameCount > 0;
-    self.reloadButton.enabled = !self.frameCount == 0;
+    self.reloadButton.enabled = self.webView.request.URL && self.frameCount== 0;
+}
+
+-(void)addButtonTargets{
+    for (UIButton *button in @[self.backButton,self.forwardButton,self.stopButton,self.reloadButton]){
+        [button removeTarget:self.webView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    [self.backButton addTarget:self.webView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    [self.forwardButton addTarget:self.webView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
+    [self.stopButton addTarget:self.webView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
+    [self.reloadButton addTarget:self.webView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+        
+}
+
+-(void)resetWebView{
+    [self.webView removeFromSuperview];
+    
+    UIWebView *newWebView = [[UIWebView alloc]init];
+    newWebView.delegate = self;
+    [self.view addSubview:newWebView];
+    
+    self.webView = newWebView;
+    
+    [self addButtonTargets];
+    
+    self.textField.text = nil;
+    [self updateButtonsAndTitle];
 }
 
 
