@@ -14,7 +14,7 @@
 @property (nonatomic,strong) NSArray *currentTitles;
 @property (nonatomic,strong) NSArray *colors;
 @property (nonatomic,strong) NSArray *labels;
-@property (nonatomic,strong) NSArray *currentLabel;
+@property (nonatomic,weak) UILabel *currentLabel;
 
 
 @end
@@ -104,19 +104,6 @@
 }
 
 
-#pragma mark - Button Enabling
-
-- (void) setEnabled:(BOOL)enabled forButtonWithTitle:(NSString *)title {
-    NSUInteger index = [self.currentTitles indexOfObject:title];
-    
-    if (index != NSNotFound) {
-        UILabel *label = [self.labels objectAtIndex:index];
-        label.userInteractionEnabled = enabled;
-        label.alpha = enabled ? 1.0 : 0.25;
-        
-        
-    }
-}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UILabel *label = [self labelFromTouches:touches withEvent:event];
@@ -157,7 +144,19 @@
     self.currentLabel = nil;
 }
 
+#pragma mark - Button Enabling
 
+- (void) setEnabled:(BOOL)enabled forButtonWithTitle:(NSString *)title {
+    NSUInteger index = [self.currentTitles indexOfObject:title];
+    
+    if (index != NSNotFound) {
+        UILabel *label = [self.labels objectAtIndex:index];
+        label.userInteractionEnabled = enabled;
+        label.alpha = enabled ? 1.0 : 0.25;
+        
+        
+    }
+}
 
 
 

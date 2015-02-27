@@ -185,7 +185,7 @@
     [self updateButtonsAndTitle];
 }
 
-#pragma mark - BLCAwesomeFloatingToolbarDelegate
+#pragma mark - AwesomeFloatingToolbarDelegate
 
 - (void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title {
     if ([title isEqual:NSLocalizedString(@"Back", @"Back command")]) {
