@@ -50,12 +50,19 @@
             [labelsArray addObject:label];
             [self addSubview:label];
         }
-      
+        self.labels = labelsArray;
+        
+        for (UILabel *thisLabel in self.labels) {
+            [self addSubview:thisLabel];
+            
+        }
         
     }
     
     return self;
 }
+
+
 
 - (void) layoutSubviews {
     // set the frames for the 4 labels
@@ -89,6 +96,8 @@
         
         
     }
+    
+    
 }
 
 
