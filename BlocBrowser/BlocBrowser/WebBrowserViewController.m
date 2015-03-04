@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) AwesomeFloatingToolbar *awesomeToolbar;
 
+
 @property (nonatomic, assign) NSUInteger frameCount;
 
 #define kBLCWebBrowserBackString NSLocalizedString(@"Back", @"Back command")
@@ -58,6 +59,9 @@
     [alert show];
     
     self.view = maineView;
+    
+
+
   
 }
 
@@ -210,6 +214,16 @@
         toolbar.frame = potentialNewFrame;
     }
 }
+
+- (void)floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPinchWithScale:(CGFloat)scale {
+    
+    CGAffineTransform transform = CGAffineTransformMakeScale(scale, scale);
+    toolbar.transform = CGAffineTransformConcat(toolbar.transform, transform);
+    NSLog(@"finished scale from vc: %f", scale);
+}
+
+
+
 
 
 @end

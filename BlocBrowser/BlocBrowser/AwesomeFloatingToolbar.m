@@ -35,6 +35,9 @@
         
         NSMutableArray *labelsArray =[[NSMutableArray alloc]init];
         
+        self.backgroundColor = [UIColor purpleColor];
+        self.clipsToBounds = NO;
+        
         for (NSString *currentTitle in self.currentTitles) {
             UILabel *label = [[UILabel alloc]init];
             label.userInteractionEnabled = NO;
@@ -55,11 +58,11 @@
         }
         self.labels = labelsArray;
         
-        for (UILabel *thisLabel in self.labels) {
-            [self addSubview:thisLabel];
-            
-        }
-        
+//        for (UILabel *thisLabel in self.labels) {
+//            [self addSubview:thisLabel];
+//            
+//        }
+//        
         self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFired:)];
         [self addGestureRecognizer:self.tapGesture];
         self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panFired:)];
@@ -169,17 +172,24 @@
     }
 }
 
-//-(void) pinchGesture:(UIPinchGestureRecognizer *)recognizer {
-//    if (recognizer.state == UIGestureRecognizerStateRecognized) {
-//        CGPoint location = [recognizer locationInView:self];
-//    }
-//}
+-(void) pinchGesture:(UIPinchGestureRecognizer *)recognizer {
 
-- (void)pinchGesture:(UIPinchGestureRecognizer *)pinch {
-    CGFloat scale = [pinch scale];
-    UIView *view = pinch.view;
-    view.transform = CGAffineTransformScale(view.transform, scale, scale);
-    [pinch setScale:1];
+    if (recognizer.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"UIGestureRecognizerStateChanged:");
+        if ([self.delegate respondsToSelector:@selector(floatingToolbar:didTryToPinchWithScale:)]) {
+            [self.delegate floatingToolbar:self didTryToPinchWithScale:recognizer.scale];
+            recognizer.scale = 1;
+        }
+        
+    }
+    
 }
+
+//- (void)pinchGesture:(UIPinchGestureRecognizer *)pinch {
+//    CGFloat scale = [pinch scale];
+//    UIView *view = pinch.view;
+//    view.transform = CGAffineTransformScale(view.transform, scale, scale);
+//    [pinch setScale:1];
+//}
 
 @end
